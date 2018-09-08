@@ -1,0 +1,35 @@
+###########################################
+# Simple Makefile for HIDAPI test program
+#
+# Alan Ott
+# Signal 11 Software
+# 2010-06-01
+###########################################
+
+all: hidtest-usbdk libhidapi-usbdk.dll
+
+CC=gcc
+CXX=g++
+COBJS=hid.o
+CPPOBJS=../hidtest/hidtest.o
+OBJS=$(COBJS) $(CPPOBJS)
+CFLAGS=-I../hidapi -g -c
+LIBS= -lsetupapi -lusbdkhelper
+DLL_LDFLAGS = -mwindows -lsetupapi -lusbdkhelper
+
+hidtest-usbdk: $(OBJS)
+	g++ -g $^ $(LIBS) -o hidtest-usbdk
+
+libhidapi-usbdk.dll: $(OBJS)
+	$(CC) -g $^ $(DLL_LDFLAGS) -o libhidapi-usbdk.dll
+
+$(COBJS): %.o: %.c
+	$(CC) $(CFLAGS) $< -o $@
+
+$(CPPOBJS): %.o: %.cpp
+	$(CXX) $(CFLAGS) $< -o $@
+
+clean:
+	rm *.o ../hidtest/*.o hidtest-usbdk.exe
+
+.PHONY: clean

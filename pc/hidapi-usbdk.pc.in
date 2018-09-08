@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: hidapi-usbdk
+Description: C Library for USB HID device access from Linux, Mac OS X, FreeBSD, and Windows. This is the UsbDk implementation.
+Version: @VERSION@
+Libs: -L${libdir} -lhidapi-usbdk
+Cflags: -I${includedir}/hidapi

@@ -34,7 +34,7 @@ SUBDIRS += libusb
 endif
 
 if OS_WINDOWS
-SUBDIRS += windows
+SUBDIRS += windows usbdk
 endif
 
 # SUBDIRS += hidapi_parser
@@ -76,6 +76,7 @@ SCMCLEAN_TARGETS= \
  Makefile.in \
  linux/Makefile.in \
  windows/Makefile.in \
+ usbdk/Makefile.in \
  m4/libtool.m4 \
  m4/lt~obsolete.m4 \
  m4/ltoptions.m4 \

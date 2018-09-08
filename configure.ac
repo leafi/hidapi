@@ -140,6 +140,7 @@ if test "x$os" = xwindows; then
 	AC_SUBST(OS_WINDOWS)
 	LDFLAGS="${LDFLAGS} -no-undefined"
 	LIBS="${LIBS} -lsetupapi"
+	# -lUsbDkHelper ???
 fi
 
 if test "x$threads" = xpthreads; then
@@ -223,6 +224,9 @@ AC_CONFIG_HEADERS([config.h])
 if test "x$os" = "xlinux"; then
 	AC_CONFIG_FILES([pc/hidapi-hidraw.pc])
 	AC_CONFIG_FILES([pc/hidapi-libusb.pc])
+elif test "x$os" = "xwindows"; then
+	AC_CONFIG_FILES([pc/hidapi-usbdk.pc])
+	AC_CONFIG_FILES([pc/hidapi.pc])
 else
 	AC_CONFIG_FILES([pc/hidapi.pc])
 fi
@@ -250,5 +254,6 @@ AC_CONFIG_FILES([Makefile \
 	linux/Makefile \
 	mac/Makefile \
 	testgui/Makefile \
-	windows/Makefile])
+	windows/Makefile \
+	usbdk/Makefile])
 AC_OUTPUT

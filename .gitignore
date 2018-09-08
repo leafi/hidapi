@@ -17,6 +17,7 @@ mac/Makefile.in
 missing
 testgui/Makefile.in
 windows/Makefile.in
+usbdk/Makefile.in
 
 Makefile
 stamp-h1
